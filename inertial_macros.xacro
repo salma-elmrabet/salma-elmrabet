@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Macro pour définir l'inertie d'une boîte -->
+  <xacro:macro name="inertial_box" params="mass x y z">
+    <inertial>
+      <mass value="${mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia  ixx="${x}" ixy="0" ixz="0" iyy="${y}" iyz="0" izz="${z}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Macro pour définir l'inertie d'un cylindre -->
+  <xacro:macro name="inertial_cylinder" params="mass length radius">
+    <inertial>
+      <mass value="${mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia  ixx="${length * radius}" ixy="0" ixz="0" iyy="${length * radius}" iyz="0" izz="${radius}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Macro pour définir l'inertie d'une sphère -->
+  <xacro:macro name="inertial_sphere" params="mass radius">
+    <inertial>
+      <mass value="${mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia  ixx="${radius * mass}" ixy="0" ixz="0" iyy="${radius * mass}" iyz="0" izz="${radius}"/>
+    </inertial>
+  </xacro:macro>
+</robot>

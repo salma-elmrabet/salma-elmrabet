@@ -1,0 +1,32 @@
+map_server:
+  ros__parameters:
+    yaml_filename: "/home/salma/dev_ws/src/articubot_one/config/my_map.yaml"
+
+nav2_controller:
+  ros__parameters:
+    controller_plugin_types: ["dwb_core::DWBLocalPlanner"]
+    controller_plugin_ids: ["FollowPath"]
+    
+nav2_planner:
+  ros__parameters:
+    planner_plugin_types: ["nav2_smac_planner/SmacPlanner2D"]
+    planner_plugin_ids: ["GridBased"]
+    
+    GridBased:
+      allow_unknown: true  # Permet la navigation en zones inconnues
+      use_dijkstra: true   # Active Dijkstra pour la planification
+      use_astar: false     # Désactive A* et active Dijkstra
+      minimum_turning_radius: 0.0
+      lethal_cost: 253
+      neutral_cost: 50
+      cost_travel_multiplier: 2.0
+
+nav2_recoveries:
+  ros__parameters:
+    recovery_plugin_types: ["nav2_behaviors/Spin", "nav2_behaviors/BackUp"]
+    recovery_plugin_ids: ["Spin", "BackUp"]
+
+nav2_util:
+  ros__parameters:
+    use_sim_time: true  # À mettre sur "false" si utilisé en réel
+
